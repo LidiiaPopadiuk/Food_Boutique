@@ -1,0 +1,52 @@
+body {
+    font-family: 'Inter';
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  input {
+    outline: none;
+  }
+  
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  
+  
+  li {
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .container {
+    max-width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    @media (min-width: 768px) {
+      padding: 0 33px;
+      max-width: 1280px;
+    }
+    @media (min-width: 1280px) {
+      padding: 0 32px;
+      max-width: 1600px;
+    }
+    @media (min-width: 1600px) {
+        padding: 0 100px;
+      max-width: 1600px;
+    }
+  }
+  
+  
+  ul {
+    padding: 0;
+    list-style: none;
+  }

@@ -1,0 +1,32 @@
+{
+  "name": "food_boutique",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://LidiiaPopadiuk.github.io/Food_Boutique",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /Food_Boutique/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LidiiaPopadiuk/Food_Boutique.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LidiiaPopadiuk/Food_Boutique/issues"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.8",
+    "modern-normalize": "^3.0.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.14.1",
+    "parcel": "^2.14.1",
+    "parcel-reporter-clean-dist": "^1.0.4",
+    "parcel-transformer-handlebars": "^1.0.0",
+    "parcel-transformer-hbs": "^1.0.4",
+    "posthtml-include": "^2.0.1"
+  }
+}
