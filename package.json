@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "homepage": "https://LidiiaPopadiuk.github.io/Food_Boutique",
-  "main": "index.js",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Food_Boutique/"
+    "build": "parcel build src/*.html --public-url /Food_Boutique/",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.14.1",
+    "gh-pages": "^6.3.0",
     "parcel": "^2.14.1",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-handlebars": "^1.0.0",

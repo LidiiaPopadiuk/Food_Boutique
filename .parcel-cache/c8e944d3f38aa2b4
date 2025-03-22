@@ -1,0 +1,11 @@
+<div id="{{_id}}">
+    <img src="{{src}}" alt="{{name}}">
+    <h2>{{name}}</h2>
+    <p>{{category}}</p>
+    <p>{{size}}</p>
+    <p>{{popularity}}</p>
+    <h2>{{price}}</h2>
+    <button>
+        <img src="../images/basket-a161fb4d.svg.svg" alt="basket">
+    </button>
+</div>
