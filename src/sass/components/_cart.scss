@@ -1,0 +1,39 @@
+.cart {
+    &__icon {
+        background: $green-dark;
+        border-radius: 30px;
+    }
+
+    &__head {
+        pointer-events: none;
+        user-select: none;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        font-weight: 500;
+    }
+
+    &__empty {
+        pointer-events: none;
+        user-select: none;
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        text-align: center;
+    }
+
+    &__objective {
+        font-weight: 400;
+    }
+
+    &__green {
+        color: $green-dark;
+    }
+}

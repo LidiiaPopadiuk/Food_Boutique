@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://LidiiaPopadiuk.github.io/Food_Boutique",
   "scripts": {
-    "start": "parcel src/*.html",
+    "start": "rm -rf .parcel-cache dist & parcel --no-cache src/*.html ",
     "build": "parcel build src/*.html --public-url /Food_Boutique/",
     "deploy": "gh-pages -d dist"
   },
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/LidiiaPopadiuk/Food_Boutique.git"
   },
-  "author": "",
+  "author": "QuatoUkr Studios",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LidiiaPopadiuk/Food_Boutique/issues"
@@ -23,11 +23,18 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.14.1",
+    "fs": "^0.0.1-security",
     "gh-pages": "^6.3.0",
     "parcel": "^2.14.1",
     "parcel-reporter-clean-dist": "^1.0.4",
     "parcel-transformer-handlebars": "^1.0.0",
     "parcel-transformer-hbs": "^1.0.4",
-    "posthtml-include": "^2.0.1"
+    "path": "^0.12.7",
+    "path-browserify": "^1.0.1",
+    "posthtml-include": "^2.0.1",
+    "process": "^0.11.10"
+  },
+  "targets": {
+    "main": false
   }
 }
