@@ -4,8 +4,7 @@
   "description": "",
   "homepage": "https://LidiiaPopadiuk.github.io/Food_Boutique",
   "scripts": {
-    "start": "npx parcel ./src/partials/intro.html",
-    "build-css": "sass src/sass/index.scss dist/styles.css",
+    "start": "npx parcel src/*.html",
     "build": "parcel build src/*.html --public-url /Food_Boutique/",
     "deploy": "gh-pages -d dist"
   },
