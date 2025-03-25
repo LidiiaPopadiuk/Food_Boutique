@@ -1,0 +1,26 @@
+.intro {
+  &__title {
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 72px;
+    line-height: 111%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    color: #010101;
+  }
+  &__subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 151%;
+    text-align: center;
+    color: rgba(1, 1, 1, 0.8);
+  }
+
+  &__circle-conatiner {
+    img {
+      width: 80px;
+      height: 80px;
+      animation: rotateText 5s linear infinite;
+    }
+  }
+}
