@@ -1,7 +1,14 @@
 import { log } from 'handlebars/runtime';
 import template from '../templates/card.hbs';
+import popularTemplate from '../templates/cardPopular.hbs';
+import discTemplate from '../templates/cardDis.hbs';
+import discountImg from '../images/round.svg'
 
 const productsAllWrapper = document.querySelector('.products__items');
+const popularProductsWrapper = document.querySelector('.products__popular');
+const discountProductsWrapper = document.querySelector('.products__discount');
+
+
 
 export const getProducts = async () => {
   try {
@@ -18,63 +25,35 @@ export const getProducts = async () => {
   }
 };
 
-// export const getProducts = async () => {
-//   try {
-//     return await fetch('https://food-boutique.b.goit.study/api/products');
-//   } catch (err) {
-//     console.error('Error fetching products:', err);
-//   }
-// };
 
-// export const renderingProducts = products => {
-//   const markUP = products.map((product, i) => {
-//     const params = {
-//       id: i,
-//       name: product.name,
-//       src: product.src,
-//       price: product.price,
-//       category: product.category,
-//       size: product.size,
-//       popularity: product.popularity,
-//     };
-//     console.log(template(params));
-//     return template(params);
-//   });
-//   productsAllWrapper.insertAdjacentHTML('beforeend', markUP.join(''));
-// };
+export const getPopularProducts = async () => {
+  try {
+    const response = await fetch('https://food-boutique.b.goit.study/api/products/popular')
+    const popularProducts = await response.json();
+    console.log('popular products:', popularProducts);
+    // const arrayPopularProducts = popularProducts.map(product => {
+    //   return popularTemplate(product)
+    // })
+    const popularProductsHTML = popularTemplate(popularProducts);
+    popularProductsWrapper.innerHTML = popularProductsHTML;
+  } catch (err) {
+    console.error('Error fetching popular products:', err);
+  }
+}
 
-// export const infoProducts = async () => {
-//   try {
-//     productsAllWrapper.innerHTML = '';
-//     const products = await getProducts();
-//     console.log("products", products);
-//     const response = await response.json();
-//     renderingProducts(response.products);
-//   } catch (err) {
-//     console.error('Error fetching products:', err);
-//   }
-// };
-
-// export const getProducts = async () => {
-//   try {
-//     const response = await fetch(
-//       'https://food-boutique.b.goit.study/api/products'
-//     );
-//     const products = await response.json();
-//     const markUP = products.map((product, i) => {
-//       const params = {
-//         id: i,
-//         name: product.name,
-//         src: product.src,
-//         price: product.price,
-//         category: product.category,
-//         description: product.description,
-//         popularity: product.popularity,
-//       };
-//       return template(params);
-//     });
-//     productsAllWrapper.insertAdjacentHTML('beforeend', markUP.join(''));
-//   } catch (err) {
-//     console.error('Error fetching products:', err);
-//   }
-// };
+export const getDiscproducts = async () => {
+  try {
+    const response = await fetch('https://food-boutique.b.goit.study/api/products/discount')
+    const discountProducts = await response.json();
+    console.log('discount products:', discountProducts);
+    const params = {
+      ...discountProducts, imgDisc: discountImg
+    } 
+    console.log(params);
+    
+    const popularproductsHTML = discTemplate(params)
+    discountProductsWrapper.innerHTML = popularproductsHTML;
+  } catch (err) {
+    console.error('Error fetching discount products:', err);
+  }
+}

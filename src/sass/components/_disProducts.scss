@@ -1,0 +1,69 @@
+.disc {
+  border-radius: 15px;
+  width: 335px;
+  height: 237px;
+  background: #fafafa;
+  padding: 15px 16px 0 16px;
+
+  &__wrapperimg {
+    border-radius: 10px;
+    width: 303px;
+    height: 150px;
+    background: #e8e8e2;
+    padding: 18px 0;
+    margin-bottom: 28px;
+  }
+
+  &__img {
+    width: 114px;
+    height: 114px;
+    margin: auto;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 121%;
+    color: #010101;
+  }
+
+  &__price {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 113%;
+    color: #010101;
+  }
+
+  &__btn {
+    border-radius: 17px;
+    width: 34px;
+    height: 34px;
+    background: #586f1f;
+    border: none;
+    padding: 9px;
+  }
+
+  &__svg {
+    width: 16px;
+    height: 16px;
+    fill: #fafafa;
+    margin: 0 auto;
+  }
+
+  &__wrappParagr {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+  }
+
+  &__bottonInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__discRound {
+    width: 60px;
+height: 60px;
+  }
+}
