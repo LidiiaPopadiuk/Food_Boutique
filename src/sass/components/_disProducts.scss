@@ -1,6 +1,6 @@
 .disc {
   border-radius: 15px;
-  max-width: 335px;
+  width: 335px;
   height: 237px;
   background: #fafafa;
   padding: 15px 16px 15px 16px;
@@ -103,6 +103,13 @@
 }
 
 .products__discount {
+  @media (min-width: 375px) {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
   @media (min-width: 768px) {
     display: flex;
     // justify-content: space-between;

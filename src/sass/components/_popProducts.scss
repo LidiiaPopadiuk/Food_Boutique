@@ -64,6 +64,7 @@
     height: 72px;
     background: #e8e8e2;
     padding: 6.5px;
+    flex-shrink: 0;
   }
 
   &__img {
@@ -74,17 +75,17 @@
 
   &__btn {
     border-radius: 10px;
-width: 20px;
-height: 20px;
-background: #e8e8e2;
-padding: 6px;
-border: none;
+    width: 20px;
+    height: 20px;
+    background: #e8e8e2;
+    padding: 6px;
+    border: none;
   }
 
   &__svg {
     position: relative;
     bottom: 6.4px;
-    fill: #6D8434;
+    fill: #6d8434;
   }
 
   &__allwrapper {
@@ -96,18 +97,21 @@ border: none;
   }
 
   &__wrapper {
-     
     &--paragr {
-        margin: 0;
-        display: flex;
-        align-items: center;
-        gap: 8.8px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8.8px;
     }
   }
-
 }
 
 .products__popular {
+  @media (min-width: 375px) {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   @media (min-width: 768px) {
     display: flex;
     // justify-content: space-between;

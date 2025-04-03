@@ -167,6 +167,11 @@
 }
 
 .products__items {
+  @media (min-width: 375px) {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
