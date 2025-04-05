@@ -52,9 +52,10 @@ body {
       width: 1000px;
     }
   
-    @media (min-width: 1400px) {
-      padding: 0 100px;
-      max-width: 1240px;
+    @media (min-width: 1600px) {
+      padding: 0 90px;
+      // max-width: 1440px;
+      width: 1440px;
     }
   }
   

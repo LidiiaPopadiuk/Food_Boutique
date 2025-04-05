@@ -4,7 +4,7 @@
   max-width: 335px;
   height: 355px;
   background: #fafafa;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @media (min-width: 768px) {
     margin: 0;
@@ -14,6 +14,10 @@
   @media (min-width: 1280px) {
     margin: 0;
     width: 298px;
+  }
+
+  @media(min-width: 1600px) {
+    height: 369px;
   }
 
   &__title {
@@ -130,10 +134,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 32px;
 
     @media (min-width: 768px) {
       margin-top: 42px;
+    }
+
+    @media (min-width: 1600px) {
+      margin-top: 22px;
     }
   }
 }
@@ -159,9 +167,17 @@
     margin-top: 64px;
     margin-bottom: 19px;
 
+    @media (min-width: 735px) {
+      margin-left: calc(50% + -343px);
+    }
+
     @media (min-width: 768px) {
       font-size: 25px;
       line-height: 126%;
+      margin-left: 0;
+    }
+    @media (min-width: 1600px) {
+      margin-top: 40px;
     }
   }
 }
@@ -171,6 +187,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 25px;
   }
   @media (min-width: 768px) {
     display: flex;
@@ -184,8 +201,11 @@
     gap: 20px;
   }
 
-  @media (min-width: 1400) {
+  @media (min-width: 1600) {
     width: 936px;
+    column-gap: 20px;
+    row-gap: 35px;
+    // width: 925px;
   }
 }
 
@@ -205,3 +225,20 @@
 // .products {
 //   display: flex;
 // }
+
+br {
+  display: none; // За замовчуванням ховаємо br
+
+  @media (min-width: 768px) {
+    display: block; // Показуємо br тільки на екранах 755px і більше
+  }
+}
+
+.productsDisplay {
+  @media (min-width: 1600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+}
