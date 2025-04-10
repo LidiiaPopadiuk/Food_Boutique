@@ -47,9 +47,12 @@ body {
     }
   
     @media (min-width: 1280px) {
-      padding: 0 32px;
+      max-width: 100%;
+      // padding: 0 16px;
       // max-width: 1000px;
-      width: 1000px;
+      width: 936px;
+      // margin-left: 296px;
+      // margin-right: 100px;
     }
   
     @media (min-width: 1600px) {
