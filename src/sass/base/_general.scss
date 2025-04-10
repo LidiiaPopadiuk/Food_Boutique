@@ -1,5 +1,9 @@
 body {
     font-family: 'Inter';
+    background: #fff;
+    @media (min-width: 768px) {
+      background-color: #E8E8E2;
+    }
   }
   
   html {
@@ -28,6 +32,7 @@ body {
   }
   
   .container {
+
     width: 100%;
     padding: 0 20px;
     margin: 0 auto;
@@ -43,10 +48,11 @@ body {
   
     @media (min-width: 1280px) {
       padding: 0 32px;
-      max-width: 1000px;
+      // max-width: 1000px;
+      width: 1000px;
     }
   
-    @media (min-width: 1600px) {
+    @media (min-width: 1400px) {
       padding: 0 100px;
       max-width: 1240px;
     }
