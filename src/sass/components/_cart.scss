@@ -1,16 +1,27 @@
 .cart {
+    user-select: none;
+
+    .del-btn {
+        background: #bb2124;
+    }
+
     &__icon {
         background: $green-dark;
         border-radius: 30px;
     }
 
     &__head {
-        pointer-events: none;
-        user-select: none;
         display: flex;
         align-items: center;
-        gap: 18px;
+        justify-content: space-between;
         text-transform: uppercase;
+
+        &-box {
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
     }
 
     &__title {
@@ -19,7 +30,7 @@
 
     &__empty {
         pointer-events: none;
-        user-select: none;
+
         margin-top: 100px;
         display: flex;
         flex-direction: column;
@@ -35,5 +46,57 @@
 
     &__green {
         color: $green-dark;
+    }
+
+    &__list {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__item {
+        background: $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        border-radius: 15px;
+    }
+
+    &__amount {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border: 2px solid $gris-dark;
+        background: $gris-dark;
+        color: white;
+        border-radius: 50px;
+
+        &-num {
+            font-size: 18px;
+        }
+
+        .btn {
+            width: 38px;
+            padding: 0;
+        }
+    }
+
+    &__firstinfo * {
+        font-size: 24px;
+    }
+
+    &__name {
+        font-weight: 700;
+    }
+
+    &__property {
+        line-height: 24px;
+
+        &-text {
+            color: $gris-light;
+        }
     }
 }

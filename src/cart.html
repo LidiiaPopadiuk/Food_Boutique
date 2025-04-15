@@ -18,8 +18,14 @@
     <section class="cart">
       <div class="container">
         <div class="cart__head">
-          <img src="images/cart.svg" alt="cart" class="cart__icon" />
-          <h2 class="cart__title">Cart ( <span id="cart-amount">0</span> )</h2>
+          <div class="cart__head-box">
+            <img src="images/cart.svg" alt="cart" class="cart__icon" />
+            <h2 class="cart__title">
+              Cart ( <span class="cart-amount">0</span> )
+            </h2>
+          </div>
+
+          <button class="cart__deleteall btn del-btn">DELETE ALL</button>
         </div>
         <ul class="cart__list"></ul>
         <div class="cart__empty" style="display: none">

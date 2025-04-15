@@ -1,0 +1,29 @@
+<li class="cart__item" data-id="1">
+    <img src="{{img}}" alt="Product"
+        class="cart__picture" />
+    <ul class="cart__firstinfo">
+        <li class="cart__name">{{name}}</li>
+        <li class="cart__prize">{{price}}</li>
+    </ul>
+
+    <ul class="cart__properties">
+        <li class="cart__property">
+            <span class="cart__property-text">Category:</span>
+            <span class="cart__value">{{category}}</span>
+        </li>
+        <li class="cart__property">
+            <span class="cart__property-text">Size:</span>
+            <span class="cart__value">{{size}}</span>
+        </li>
+        <li class="cart__property">
+            <span class="cart__property-text">Popularity:</span>
+            <span class="cart__value">{{popularity}}</span>
+        </li>
+    </ul>
+    <div class="cart__amount">
+        <button class="cart__amount-plus btn">+</button>
+        <span class="cart__amount-num">{{amount}}</span>
+        <button class="cart__amount-minus btn">-</button>
+    </div>
+    <button class="btn cart__delete del-btn">&#x1F5D1;</button>
+</li>

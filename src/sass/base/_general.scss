@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Inter';
+  font-family: 'Inter', "Noto Color Emoji", sans-serif;
   background: $background-color;
 }
 
@@ -73,12 +73,12 @@ ul {
 }
 
 .btn {
+  user-select: none;
   min-height: 38px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-weight: 600;
-  margin: 0 auto;
   padding: 6px 14px;
   background: $green-dark;
   color: $background-color;
@@ -93,5 +93,21 @@ ul {
 
   @media (min-width: 768px) {
     padding: 12px 28px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+
+  &-track {
+    border-left: 3px solid $gris-dark;
+  }
+
+  &-thumb {
+    background: $green-dark;
+
+    &:hover {
+      background: $green-light;
+    }
   }
 }
