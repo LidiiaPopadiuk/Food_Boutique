@@ -12,6 +12,7 @@ if (!Array.isArray(cartData)) {
 }
 
 const loadCart = () => {
+  if (!cartList) return;
   cartList.innerHTML = '';
 
   cartAmount.forEach(el => {
