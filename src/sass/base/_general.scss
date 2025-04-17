@@ -21,6 +21,11 @@
 body {
   font-family: 'Inter', "Noto Color Emoji", sans-serif;
   background: $background-color;
+  background: #fff;
+
+  @media (min-width: 768px) {
+    background-color: #E8E8E2;
+  }
 }
 
 html {
@@ -58,6 +63,7 @@ a {
 }
 
 .container {
+
   width: 100%;
   padding: 0 20px;
   margin: 0 auto;
@@ -69,10 +75,11 @@ a {
 
   @media (min-width: 1280px) {
     padding: 0 32px;
-    min-width: 1000px;
+    // min-width: 1000px;
+    width: 1000px;
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1400px) {
     padding: 0 100px;
     min-width: 1240px;
   }
