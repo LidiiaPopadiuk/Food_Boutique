@@ -67,22 +67,19 @@ export const getDiscproducts = async () => {
 
 
 
-
-
-
-const paginationInfo = async () => {
-  const response = await fetch(
-    'https://food-boutique.b.goit.study/api/products'
-  );
-  const products = await response.json();
-  const wrapperPagination = document.querySelector('.products__pagination')
-  products.forEach(product => {
-    const button = document.createElement('button');
-  })
+// const paginationInfo = async () => {
+//   const response = await fetch(
+//     'https://food-boutique.b.goit.study/api/products'
+//   );
+//   const products = await response.json();
+//   const wrapperPagination = document.querySelector('.products__pagination')
+//   products.forEach(product => {
+//     const button = document.createElement('button');
+//   })
 
 
 
 
-  const totalPages = Math.ceil(products.count / limit);
-  console.log('total pages:', totalPages);
-}
+//   const totalPages = Math.ceil(products.count / limit);
+//   console.log('total pages:', totalPages);
+// }

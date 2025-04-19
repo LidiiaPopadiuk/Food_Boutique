@@ -172,7 +172,7 @@
     padding: 17px 21px 17px 21px;
     @media (min-width: 768px) {
       width: 189px;
-      height: 52px;
+      height: auto;
     }
     &:hover{
       outline: 1px solid #6d8434;
@@ -183,7 +183,6 @@
     background-color: rgb(0, 0, 0, 0);
     border: none;
     width: 293px;
-    height: 17px;
     font-weight: 400;
     font-size: 12px;
     line-height: 144%;
@@ -197,7 +196,7 @@
   }
   &__conatiner-sortby {
     width: 335px;
-    height: 52px;
+    height: auto;
     border: 1px solid rgba(1, 1, 1, 0.3);
     border-radius: 30px;
     display: flex;
@@ -205,7 +204,6 @@
     padding: 17px 21px 17px 21px;
     @media (min-width: 768px) {
       width: 112px;
-      height: 52px;
     }
     &:hover{
       outline: 1px solid #6d8434;
@@ -222,6 +220,7 @@
     line-height: 144%;
     color: #010101;
     outline: none;
+    
     transition: all 0.3s ease;
     @media (min-width: 768px) {
       width: 71px;
