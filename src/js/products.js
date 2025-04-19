@@ -9,6 +9,12 @@ const productsAllWrapper = document.querySelector('.products__items');
 const popularProductsWrapper = document.querySelector('.products__popular');
 const discountProductsWrapper = document.querySelector('.products__discount');
 const paginationWrapper = document.querySelector('.products__pagination');
+const wrapperAllPagination = document.querySelector('.pagination__wrapper');
+const firstBtn = document.querySelector('.firstF'); // <<
+const lastBtn = document.querySelector('.lastS'); // >>
+const firstSecBtn = document.querySelector('.secondS'); // >
+const lastFirstBtn = document.querySelector('.lastF'); // <
+
 // const modalWrapper = document.querySelector('.backdrop')
 
 // export const getProducts = async () => {
@@ -38,33 +44,58 @@ const paginationWrapper = document.querySelector('.products__pagination');
 const renderPagination = (currentPage, totalPages) => {
   paginationWrapper.innerHTML = '';
 
-  for (let i = 1; i <= totalPages; i++) {
-    if (
-      i === 1 ||
-      i === totalPages ||
-      (i <= currentPage + 3 && i >= currentPage - 1)
-    ) {
-      const btn = document.createElement('button');
-      btn.classList.add('cards__btn');
-      btn.dataset.page = i;
-      btn.textContent = i;
-      if (i === currentPage) {
-        btn.disabled = true;
-        // btn.style.backgroundColor = '#6D8434';
-      }
-      // if (i >= 3) {
-      //   btn.
-      // }
-      if (i === totalPages) {
-        btn.textContent = '...';
-        btn.classList.add('cards__btn--active');
-      }
-      paginationWrapper.appendChild(btn);
+  let startPage = Math.max(1, currentPage - 1);
+  let endPage = Math.min(totalPages, startPage + 3);
+
+  if (endPage - startPage < 3) {
+    startPage = Math.max(1, endPage - 3);
+  }
+
+  // for (let i = startPage; i <= endPage; i++) {
+  //   const btn = document.createElement('button');
+  //   btn.classList.add('cards__btn');
+  //   btn.dataset.page = i;
+  //   btn.textContent = i;
+
+  //   if (i === currentPage) {
+  //     btn.classList.add('cards__btn--active');
+  //     btn.disabled = true;
+  //   }
+
+  //   paginationWrapper.appendChild(btn);
+  // }
+
+  for (let i = startPage; i <= endPage; i++) {
+    const btn = document.createElement('button');
+    btn.classList.add('cards__btn');
+    btn.dataset.page = i;
+    btn.innerHTML = `<span class='cards__span'>${i}</span>`;
+
+    if (i === currentPage) {
+      btn.classList.add('cards__btn--active');
+      btn.disabled = true;
     }
+
+    paginationWrapper.appendChild(btn);
+  }
+
+  if (startPage > 1) {
+    const dotsStart = document.createElement('span');
+    dotsStart.textContent = '...';
+    dotsStart.classList.add('pagination__dots');
+    paginationWrapper.insertBefore(dotsStart, paginationWrapper.firstChild);
+  }
+
+  if (endPage < totalPages) {
+    const dotsEnd = document.createElement('span');
+    dotsEnd.textContent = '...';
+    dotsEnd.classList.add('pagination__dots');
+    paginationWrapper.appendChild(dotsEnd);
   }
 };
 
 let currentPage = 1;
+let totalPagesGlobal = 1;
 
 export const getProducts = async (page = 1) => {
   try {
@@ -86,7 +117,8 @@ export const getProducts = async (page = 1) => {
     );
     const products = await response.json();
     console.log('products:', products);
-    renderPagination(page, products.totalPages);
+    totalPagesGlobal = products.totalPages;
+    renderPagination(page, totalPagesGlobal);
     const productsHTML = template(products.results);
     productsAllWrapper.innerHTML = productsHTML;
     return products;
@@ -95,10 +127,69 @@ export const getProducts = async (page = 1) => {
   }
 };
 
+if (currentPage === 1) {
+  firstBtn.classList.add('disable');
+  lastFirstBtn.classList.add('disable');
+} else {
+  firstBtn.classList.remove('disable');
+  lastFirstBtn.classList.remove('disable');
+}
 
+
+wrapperAllPagination.addEventListener('click', e => {
+  // const firstBtn = e.target.closest('.firstF'); // <<
+  // const lastBtn = e.target.closest('.lastS'); // >>
+  // const firstSecBtn = e.target.closest('.secondS'); // >
+  // const lastFirstBtn = e.target.closest('.lastF'); // <
+
+  if (e.target.classList.contains('firstF')) {
+    currentPage = 1;
+    getProducts(currentPage);
+  }
+  if (lastBtn) {
+    currentPage = totalPagesGlobal;
+    getProducts(currentPage);
+  }
+  if (lastFirstBtn) {
+    if (currentPage > 1) {
+      currentPage -= 1;
+      getProducts(currentPage);
+    }
+  }
+  if (firstSecBtn) {
+    if (currentPage < totalPagesGlobal) {
+      currentPage += 1;
+      getProducts(currentPage);
+    }
+  }
+
+  console.log(currentPage);
+
+  if (currentPage === 1) {
+    firstBtn.classList.add('disable');
+    lastFirstBtn.classList.add('disable');
+  } else {
+    firstBtn.classList.remove('disable');
+    lastFirstBtn.classList.remove('disable');
+  }
+
+  if (currentPage === totalPagesGlobal) {
+    lastBtn.classList.add('disable');
+    firstSecBtn.classList.add('disable');
+  } else {
+    lastBtn.classList.remove('disable');
+    firstSecBtn.classList.remove('disable');
+  }
+});
 paginationWrapper.addEventListener('click', e => {
-  if (e.target.classList.contains('cards__btn')) {
-    currentPage = +e.target.dataset.page;
+  // if (e.target.closest('.cards__btn')) {
+  //   currentPage = +e.target.dataset.page;
+  //   getProducts(currentPage);
+  // }
+
+  const btn = e.target.closest('.cards__btn');
+  if (btn) {
+    currentPage = +btn.dataset.page;
     getProducts(currentPage);
   }
 });
@@ -138,10 +229,6 @@ export const getDiscproducts = async () => {
     console.error('Error fetching discount products:', err);
   }
 };
-
-
-
-
 
 // closeModal.addEventListener('click', () => {
 //   modal.classList.remove('is-hidden');
