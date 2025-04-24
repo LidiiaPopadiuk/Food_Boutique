@@ -1,4 +1,8 @@
 .disc {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  user-select: none;
   border-radius: 15px;
   width: 335px;
   height: 237px;
@@ -38,6 +42,7 @@
   }
 
   &__img {
+    pointer-events: none;
     width: 114px;
     height: 114px;
     margin: auto;
@@ -60,7 +65,7 @@
   }
 
   &__btn {
-    border-radius: 17px;
+    border-radius: 100%;
     width: 34px;
     height: 34px;
     background: #586f1f;
@@ -97,6 +102,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -115,6 +121,7 @@
     flex-direction: row;
     // justify-content: space-between;
   }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: start;
@@ -130,7 +137,6 @@
     margin-top: 19px;
   }
 }
-
 .discountDiv {
   @media (min-width: 375px) {
     width: 335px;

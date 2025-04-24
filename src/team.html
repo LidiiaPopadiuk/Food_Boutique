@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our team - Food Boutique</title>
+
+    <link rel="stylesheet" href="sass/index.scss" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    />
+
+    <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <include src="./partials/header.html"></include>
+    <section class="team">
+      <div class="container">
+        <div class="team__slides">
+          <div class="team__slide">
+            <img src="../src/images/Oleg.webp" alt="Our Team" loading="lazy" />
+            <div class="team__text">
+              <h2 class="team__name" data-i18n="team[0].n"></h2>
+              <span class="team__profession" data-i18n="team[0].p"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="team-join">
+      <div class="container">
+        <h2 class="team-join__title">Do you want to join our great team?</h2>
+        <button class="team-join__btn btn">Join us</button>
+      </div>
+    </div>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>

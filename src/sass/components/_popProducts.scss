@@ -1,4 +1,8 @@
 .pop {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  user-select: none;
   padding: 12.5px 12px 12.5px 12px;
   border-radius: 10px;
   max-width: 335px;
@@ -81,13 +85,14 @@
   }
 
   &__img {
+    pointer-events: none;
     border-radius: 10px;
     width: 59px;
     height: 59px;
   }
 
   &__btn {
-    border-radius: 10px;
+    border-radius: 100%;
     width: 20px;
     height: 20px;
     background: #e8e8e2;
@@ -136,6 +141,7 @@
     flex-wrap: wrap;
     gap: 15px;
   }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: start;
@@ -149,7 +155,6 @@
     margin-top: 20px;
   }
 }
-
 .popularDiv {
   width: 335px;
   margin: 0 auto;

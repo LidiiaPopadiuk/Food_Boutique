@@ -1,3 +1,5 @@
+import { add2Cart } from './cart';
+
 import { log } from 'handlebars/runtime';
 import template from '../templates/card.hbs';
 import popularTemplate from '../templates/cardPopular.hbs';
@@ -102,6 +104,8 @@ export const getProducts = async (page = 1) => {
     const screenWidth = window.innerWidth;
     let limit;
     if (screenWidth >= 1280) {
+    let limit;
+    if (screenWidth >= 1280) {
       limit = 9;
     } else if (screenWidth >= 768) {
       limit = 8;
@@ -187,7 +191,6 @@ export const getPopularProducts = async () => {
       'https://food-boutique.b.goit.study/api/products/popular'
     );
     const popularProducts = await response.json();
-    console.log('popular products:', popularProducts);
     // const arrayPopularProducts = popularProducts.map(product => {
     //   return popularTemplate(product)
     // })
@@ -196,6 +199,7 @@ export const getPopularProducts = async () => {
   } catch (err) {
     console.error('Error fetching popular products:', err);
   }
+};
 };
 
 export const getDiscproducts = async () => {
@@ -210,6 +214,7 @@ export const getDiscproducts = async () => {
     //   ...discountProducts, imgDisc: discountImg
     // }
     // console.log(params);
+    const popularproductsHTML = discTemplate(discountProducts2el);
     const popularproductsHTML = discTemplate(discountProducts2el);
     discountProductsWrapper.innerHTML = popularproductsHTML;
   } catch (err) {

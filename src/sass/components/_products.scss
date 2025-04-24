@@ -1,4 +1,8 @@
 .pr {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  user-select: none;
   border-radius: 20px;
   padding: 20px;
   max-width: 335px;
@@ -60,6 +64,7 @@
       line-height: 141%;
     }
   }
+
   &__popular {
     font-weight: 400;
     font-size: 10px;
@@ -89,8 +94,8 @@
   }
 
   &__btn {
-    border-radius: 17px;
-    width: 34px;
+    border-radius: 100%;
+    width: 38px;
     height: 34px;
     background: #586f1f;
     border: none;
@@ -105,6 +110,7 @@
   }
 
   &__img {
+    pointer-events: none;
     width: 140px;
     height: 140px;
   }
@@ -193,6 +199,7 @@
     flex-wrap: wrap;
     gap: 25px;
   }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -229,7 +236,6 @@
 // .products {
 //   display: flex;
 // }
-
 br {
   display: none; // За замовчуванням ховаємо br
 

@@ -1,5 +1,5 @@
-// import { log } from 'handlebars'
-// import template from '../templates/card.hbs'
+import './dev';
+import { add2Cart } from './cart';
 
 import './products.js'
 import { getProducts, getPopularProducts, getDiscproducts } from './products.js'
