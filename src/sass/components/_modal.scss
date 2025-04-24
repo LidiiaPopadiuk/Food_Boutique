@@ -1,14 +1,26 @@
 .modal {
-  border: 1px solid green;
   background-color: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   &__box {
     padding: 30px 15px 30px 15px;
     width: 300px;
     background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   &__close {
     font-weight: bold;
     font-size: 25;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
   }
   &__title {
     margin: 0;
@@ -27,5 +39,10 @@
   }
   &__price {
     font-weight: bold;
+  }
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
   }
 }

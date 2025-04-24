@@ -1,0 +1,27 @@
+<h4 class='modal__title'>{{this.title}}</h4>
+<div class='modal__subbox'>
+  <div class='modal__wrapperimg'>
+    <img class='modal__img' src='{{this.img}}' alt='{{this.name}}' />
+  </div>
+  <ul class='modal__list'>
+    <li class='modal__card-item'>
+      Category:
+      <span class='modal__card-span'>{{this.category}}</span>
+    </li>
+    <li class='modal__card-item'>
+      Size:
+      <span class='modal__card-span'>{{this.size}}</span>
+    </li>
+    <li class='modal__card-item'>
+      Popularity:
+      <span class='modal__card-span'>{{this.popularity}}</span>
+    </li>
+  </ul>
+  <p class='modal__desc'>
+    {{this.desc}}
+  </p>
+</div>
+<div class='modal__buying-box'>
+  <span class='modal__price'>{{this.price}}</span>
+  <button class='modal__buy-btn'>Add to 🧺</button>
+</div>
