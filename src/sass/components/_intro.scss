@@ -161,6 +161,7 @@
     cursor: pointer;
     position: relative;
     left: 9px;
+    padding: 0;
   }
   &__container-select {
     width: 335px;
@@ -203,7 +204,7 @@
     justify-content: space-between;
     padding: 17px 21px 17px 21px;
     @media (min-width: 768px) {
-      width: 112px;
+      width: auto;
     }
     &:hover{
       outline: 1px solid #6d8434;
@@ -220,7 +221,7 @@
     line-height: 144%;
     color: #010101;
     outline: none;
-    
+
     transition: all 0.3s ease;
     @media (min-width: 768px) {
       width: 71px;
@@ -228,4 +229,18 @@
     }
    
   }
+}
+
+.small-width {
+  width: 73px;
+}
+
+.medium-width {
+  width: 83px;
+  height: auto;
+}
+
+.large-width {
+  width: 119px;
+  height: auto;
 }

@@ -125,6 +125,22 @@ const filterByType = async () => {
   console.log(products);
   renderProducts(products);
 };
+
+const updateSelectSize = () => {
+  selectSortby.classList.remove('small-option', 'medium-option', 'large-option')
+
+  const value = selectSortby.value
+
+  if (value === 'byABC_Asc' || value === 'byABC_Desc') {
+    selectSortby.classList.add('small-width');
+  } else if (value === 'byPrice_Asc' || value === 'byPopularity_Desc') {
+    selectSortby.classList.add('medium-width');
+  } else {
+    selectSortby.classList.add('large-width');
+  }
+}
+
+
 const renderProducts = products => {
   console.log('products', products);
 
@@ -164,3 +180,4 @@ const renderProducts = products => {
 inputSearch.addEventListener('input', filterSearch);
 selectCategories.addEventListener('change', filterByCategory);
 selectSortby.addEventListener('change', filterByType);
+selectSortby.addEventListener('change', updateSelectSize)
