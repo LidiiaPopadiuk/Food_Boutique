@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Food_Boutique</title>
+    <title>Food Boutique</title>
 
     <link rel="stylesheet" href="sass/index.scss" />
     <link
@@ -22,5 +22,16 @@
     ></script>
 
     <script type="module" src="./js/index.js"></script>
+    <script type="module">
+      import {
+        getProducts,
+        getPopularProducts,
+        getDiscproducts,
+      } from './js/products.js';
+
+      getProducts();
+      getPopularProducts();
+      getDiscproducts();
+    </script>
   </body>
 </html>

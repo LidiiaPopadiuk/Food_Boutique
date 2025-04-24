@@ -21,11 +21,6 @@
 body {
   font-family: 'Inter', "Noto Color Emoji", sans-serif;
   background: $background-color;
-  background: #fff;
-
-  @media (min-width: 768px) {
-    background-color: #E8E8E2;
-  }
 }
 
 html {
@@ -110,6 +105,10 @@ ul {
     box-shadow: 0px 0px 3px 0px $gris-dark;
   }
 
+  &:focus {
+    outline: 5px solid $gris-dark;
+  }
+
   @media (min-width: 768px) {
     padding: 12px 28px;
   }
@@ -128,5 +127,21 @@ ul {
     &:hover {
       background: $green-light;
     }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
