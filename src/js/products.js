@@ -127,44 +127,9 @@ export const getProducts = async (page = 1) => {
   }
 };
 
-if (currentPage === 1) {
-  firstBtn.classList.add('disable');
-  lastFirstBtn.classList.add('disable');
-} else {
-  firstBtn.classList.remove('disable');
-  lastFirstBtn.classList.remove('disable');
-}
-
-
-wrapperAllPagination.addEventListener('click', e => {
-  // const firstBtn = e.target.closest('.firstF'); // <<
-  // const lastBtn = e.target.closest('.lastS'); // >>
-  // const firstSecBtn = e.target.closest('.secondS'); // >
-  // const lastFirstBtn = e.target.closest('.lastF'); // <
-
-  if (e.target.classList.contains('firstF')) {
-    currentPage = 1;
-    getProducts(currentPage);
-  }
-  if (lastBtn) {
-    currentPage = totalPagesGlobal;
-    getProducts(currentPage);
-  }
-  if (lastFirstBtn) {
-    if (currentPage > 1) {
-      currentPage -= 1;
-      getProducts(currentPage);
-    }
-  }
-  if (firstSecBtn) {
-    if (currentPage < totalPagesGlobal) {
-      currentPage += 1;
-      getProducts(currentPage);
-    }
-  }
-
-  console.log(currentPage);
-
+// Функція для оновлення стану кнопок
+const updatePaginationButtons = () => {
+  // Оновлюємо стан кнопок "перша" і "попередня"
   if (currentPage === 1) {
     firstBtn.classList.add('disable');
     lastFirstBtn.classList.add('disable');
@@ -173,6 +138,7 @@ wrapperAllPagination.addEventListener('click', e => {
     lastFirstBtn.classList.remove('disable');
   }
 
+  // Оновлюємо стан кнопок "остання" і "наступна"
   if (currentPage === totalPagesGlobal) {
     lastBtn.classList.add('disable');
     firstSecBtn.classList.add('disable');
@@ -180,17 +146,38 @@ wrapperAllPagination.addEventListener('click', e => {
     lastBtn.classList.remove('disable');
     firstSecBtn.classList.remove('disable');
   }
-});
-paginationWrapper.addEventListener('click', e => {
-  // if (e.target.closest('.cards__btn')) {
-  //   currentPage = +e.target.dataset.page;
-  //   getProducts(currentPage);
-  // }
+};
 
+// Обробка кліків на кнопки навігації
+wrapperAllPagination.addEventListener('click', e => {
+  const target = e.target.closest('button');
+  if (!target) return;
+
+  if (target.classList.contains('firstF')) {
+    currentPage = 1;
+  } else if (target.classList.contains('lastS')) {
+    currentPage = totalPagesGlobal;
+  } else if (target.classList.contains('lastF')) {
+    if (currentPage > 1) {
+      currentPage -= 1;
+    }
+  } else if (target.classList.contains('secondS')) {
+    if (currentPage < totalPagesGlobal) {
+      currentPage += 1;
+    }
+  }
+
+  getProducts(currentPage);
+  updatePaginationButtons();
+});
+
+// Обробка кліків на кнопки сторінок
+paginationWrapper.addEventListener('click', e => {
   const btn = e.target.closest('.cards__btn');
   if (btn) {
     currentPage = +btn.dataset.page;
     getProducts(currentPage);
+    updatePaginationButtons();
   }
 });
 
