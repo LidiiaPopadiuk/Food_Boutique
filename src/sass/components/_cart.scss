@@ -25,7 +25,13 @@
   }
 
   &__title {
+    padding: 3px;
     font-weight: 500;
+
+    &--green {
+      background: $green-dark;
+      color: white;
+    }
   }
 
   &__empty {

@@ -3,15 +3,17 @@ import tmpl from '../templates/cart.hbs';
 const cartList = document.querySelector('.cart__list');
 const cartAmount = document.querySelectorAll('.cart-amount');
 const deleteAll = document.querySelector('.cart__deleteall');
+const prizeSum = document.querySelector('#prize-sum');
 
 let cartData = JSON.parse(localStorage.getItem('cart'));
+let totalSum = 0;
 
 if (!Array.isArray(cartData)) {
   cartData = [];
   localStorage.setItem('cart', JSON.stringify(cartData));
 }
 
-const loadCart = () => {
+const loadCart = async () => {
   cartData = JSON.parse(localStorage.getItem('cart')) || [];
 
   cartAmount.forEach(el => {
@@ -29,6 +31,7 @@ const loadCart = () => {
     cartEmpty.style.removeProperty('display');
     deleteAll.style.display = 'none';
     form.style.display = 'none';
+    await updateTotalPrice();
     return;
   } else {
     cartEmpty?.classList.add('hidden');
@@ -61,6 +64,8 @@ const loadCart = () => {
         console.error('Error loading product:', error);
       }
     }
+
+    await updateTotalPrice(); // ⬅ ОНОВЛЕННЯ ЦІНИ ПІСЛЯ ВИВОДУ ПРОДУКТІВ
   };
 
   fetchProducts();
@@ -84,6 +89,24 @@ export const add2Cart = id => {
 
 loadCart();
 
+const updateTotalPrice = async () => {
+  let total = 0;
+
+  for (const el of cartData) {
+    try {
+      const response = await fetch(
+        `https://food-boutique.b.goit.study/api/products/${el.id}`,
+      );
+      const product = await response.json();
+      total += +el.amount * +product.price;
+    } catch (error) {
+      console.error('Error getting price:', error);
+    }
+  }
+
+  prizeSum.textContent = `$${total.toFixed(2)}`;
+};
+
 if (!cartList) return;
 cartList.addEventListener('click', e => {
   const getId = (dom = false) => {
@@ -99,6 +122,7 @@ cartList.addEventListener('click', e => {
     }
   };
   const expr = expr => e.target.classList.contains(expr);
+
   const numAct = action => {
     const id = getId();
     const item = cartData.find(item => item.id === id);
@@ -114,6 +138,8 @@ cartList.addEventListener('click', e => {
     const num = getId(true).querySelector('.cart__amount-num');
     num.textContent =
       action === '+' ? +num.textContent + 1 : +num.textContent - 1;
+
+    updateTotalPrice();
   };
 
   if (expr('cart__amount-plus')) numAct('+');
