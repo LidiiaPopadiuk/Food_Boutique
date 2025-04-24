@@ -1,0 +1,45 @@
+{
+    "header": {
+        "home": "Home",
+        "our-team": "Our team"
+    },
+    "cart": {
+        "n": "Cart",
+        "phrases": [
+            "Your basket is",
+            "empty",
+            "Go to the main page to select your favorite",
+            "products and add them to the cart."
+        ]
+    },
+    "team": [
+        {
+            "n": "Oleg Hayduk",
+            "p": "Founder of this company"
+        },
+        {
+            "n": "Ania Kovalska",
+            "p": "Designer"
+        },
+        {
+            "n": "Ivan Jukajtis",
+            "p": "Architector"
+        },
+        {
+            "n": "Lidia Popadiuk",
+            "p": "Dev lead"
+        },
+        {
+            "n": "Zahar Bratslavskyj",
+            "p": "IT-consultant"
+        },
+        {
+            "n": "Polina Bondarenko",
+            "p": "Scrum Master"
+        },
+        {
+            "n": "Artur Kusharenko",
+            "p": "Developer"
+        }
+    ]
+}

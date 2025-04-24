@@ -1,10 +1,11 @@
 {
+  "type": "module",
   "name": "food_boutique",
   "version": "1.0.0",
   "description": "",
   "homepage": "https://LidiiaPopadiuk.github.io/Food_Boutique",
   "scripts": {
-    "start": "parcel src/*.html",
+    "start": "rm -rf .parcel-cache dist & parcel --no-cache src/*.html ",
     "build": "parcel build src/*.html --public-url /Food_Boutique/",
     "deploy": "gh-pages -d dist"
   },
@@ -12,22 +13,26 @@
     "type": "git",
     "url": "git+https://github.com/LidiiaPopadiuk/Food_Boutique.git"
   },
-  "author": "",
+  "author": "QuatoUkr Studios",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/LidiiaPopadiuk/Food_Boutique/issues"
   },
   "dependencies": {
     "handlebars": "^4.7.8",
-    "modern-normalize": "^3.0.1"
+    "leaflet": "^1.9.4",
+    "modern-normalize": "^3.0.1",
+    "vanilla-i18n": "^1.0.8"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.14.1",
     "gh-pages": "^6.3.0",
     "parcel": "^2.14.1",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "parcel-transformer-handlebars": "^1.0.0",
     "parcel-transformer-hbs": "^1.0.4",
     "posthtml-include": "^2.0.1"
+  },
+  "targets": {
+    "main": false
   }
 }

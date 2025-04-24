@@ -1,0 +1,51 @@
+.header {
+    padding: 10px;
+    user-select: none;
+    margin-bottom: 60px;
+
+    &__logo {
+        pointer-events: none;
+        height: 23px;
+
+        @media (min-width: 768px) {
+            height: auto;
+        }
+    }
+
+    .header__right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px;
+
+        @media (min-width: 768px) {
+            gap: 23px;
+        }
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__cart {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        text-transform: uppercase;
+    }
+
+    &__cartbtn {
+        padding: 0;
+    }
+
+    &__text {
+        display: none;
+
+        @media (min-width: 480px) {
+            display: block;
+        }
+    }
+}
