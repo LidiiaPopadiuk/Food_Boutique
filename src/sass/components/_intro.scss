@@ -232,15 +232,24 @@
 }
 
 .small-width {
-  width: 73px;
+  @media (min-width: 768px) {
+    width: 71px;
+  }
+ 
 }
 
 .medium-width {
-  width: 83px;
-  height: auto;
+  @media (min-width: 768px) {
+    width: 83px;
+    height: auto;
+  }
+ 
 }
 
 .large-width {
-  width: 119px;
-  height: auto;
+  @media (min-width: 768px) {
+    width: 119px;
+    height: auto;
+  }
+
 }
