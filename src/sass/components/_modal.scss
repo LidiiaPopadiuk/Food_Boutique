@@ -5,15 +5,24 @@
   left: 0;
   right: 0;
   bottom: 0;
+
   &__box {
     padding: 30px 15px 30px 15px;
-    width: 300px;
+    width: 600px;
     background-color: white;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 15px;
   }
+
+  &__subbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+  }
+
   &__close {
     font-weight: bold;
     font-size: 25;
@@ -31,11 +40,13 @@
     flex-wrap: wrap;
     gap: 10px;
     margin: 0;
+    align-content: flex-start;
   }
   &__buying-box {
     display: flex;
     justify-content: space-between;
     gap: 50px;
+    margin-top: 300px;
   }
   &__price {
     font-weight: bold;
@@ -44,5 +55,29 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+  &__desc {
+    margin: 0;
+  }
+  &__wrapperimg {
+    background-color: #ecede7;
+    border-radius: 10px;
+  }
+  &__wrapper {
+    height: 600px;
+  }
+  &__buy-btn {
+    background-color: #788f2f;
+    border-radius: 30px;
+    border: none;
+    padding: 7px 15px 7px 15px;
+    color: white;
+    cursor: pointer;
+  }
+  &__card-item {
+    color: gray;
+  }
+  &__card-span {
+    color: black;
   }
 }
