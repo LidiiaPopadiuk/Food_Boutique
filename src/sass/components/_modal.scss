@@ -1,0 +1,108 @@
+.modal {
+  background-color: rgba(0, 0, 0, 0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+
+  &__box {
+    padding: 30px 15px 30px 15px;
+    width: 600px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+
+    @media (min-width: 480px) {
+      width: 435px;
+      height: 90%;
+    }
+  }
+
+  &__subbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+
+    @media (min-width: 480px) {
+      justify-content: center;
+      gap: 25px;
+    }
+
+    @media (min-width: 768px) {
+      gap: 30px;
+    }}
+
+    &__close {
+      font-weight: bold;
+      font-size: 25px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+    &__title {
+      margin: 0;
+    }
+    &__list {
+      display: flex;
+      width: 300px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      align-content: flex-start;
+    }
+    &__buying-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @media (min-width: 480px) {
+        padding: 10px 0 10px;
+      }
+    }
+    &__price {
+      font-weight: bold;
+    }
+
+    &__desc {
+      margin: 0;
+
+      @media (min-width: 480px) {
+        font-size: 10px;
+        height: 35px;
+        overflow-y: auto;
+      }
+    }
+    &__wrapperimg {
+      background-color: #ecede7;
+      border-radius: 10px;
+    }
+    &__wrapper {
+      height: 400px;
+    }
+    &__buy-btn {
+      background-color: #788f2f;
+      border-radius: 30px;
+      border: none;
+      padding: 7px 15px 7px 15px;
+      color: white;
+      cursor: pointer;
+    }
+    &__card-item {
+      color: gray;
+    }
+    &__card-span {
+      color: black;
+    }
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

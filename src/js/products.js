@@ -236,6 +236,7 @@ document.addEventListener('click', async (e) => {
   const discountElement = button.closest('.disc');
   const popularElement = button.closest('.pop');
 
+
   if (discountElement && discountElement.id) {
     add2Cart(discountElement.id);
     return;
@@ -249,5 +250,6 @@ document.addEventListener('click', async (e) => {
     add2Cart(popularElement.id);
     return;
   }
-  console.error('Could not find product or discount ID');
+
+
 });
