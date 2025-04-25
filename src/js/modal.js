@@ -1,9 +1,11 @@
 import { log } from 'handlebars/runtime';
 import modalTemplate from '../templates/modal.hbs';
+import { add2Cart } from './cart';
+
 
 const modal = document.querySelector('.modal');
 const modalWrapper = document.querySelector('.modal__wrapper');
-const listOfProducts = document.querySelector('.products__items');
+const listOfProducts = document.querySelector('.productsDisplay');
 const closeModalBtn = document.querySelector('.modal__close');
 
 const getProductId = async id => {
@@ -16,14 +18,19 @@ const getProductId = async id => {
 
 listOfProducts.addEventListener('click', async e => {
   if (
-    e.target.classList.contains('open-modal-btn') ||
-    e.target.classList.contains('pr__svg') ||
-    e.target.closest('.pr')
+    e.target.closest('.pr__btn.add2cart') ||
+    e.target.closest('.pop__btn.btn.add2cart') ||
+    e.target.closest('.disc__btn.btn.add2cart')
   ) {
+    return;
+  }
+
+  const productCard = e.target.closest('.pr') || e.target.closest('.pop') || e.target.closest('.disc');
+  if (productCard) {
     modal.classList.remove('is-hidden');
     document.body.style.overflow = 'hidden';
 
-    const id = e.target.closest('.pr').id;
+    const id = productCard.id;
     console.log('id', id);
 
     const product = await getProductId(id);
@@ -38,3 +45,17 @@ closeModalBtn.addEventListener('click', () => {
   modal.classList.add('is-hidden');
   document.body.style.overflow = 'auto';
 });
+
+modalWrapper.addEventListener('click', e => {
+  if (!e.target.closest('.add2cart')) return;
+
+  const button = e.target.closest('.add2cart');
+  if (!button) return;
+
+
+  const id = e.target.closest('.add2cart').id;
+  console.log('id', id);
+
+  add2Cart(id);
+
+})
