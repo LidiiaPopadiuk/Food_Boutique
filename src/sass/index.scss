@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
+@import './utils/colors';
 @import './base/normalize';
 @import './base/general';
 @import './utils/colors';
@@ -9,6 +10,6 @@
 @import './components/popProducts';
 @import './components/disProducts';
 
-
-
-
+@import './components/header';
+@import './components/cart';
+@import './components/history';
