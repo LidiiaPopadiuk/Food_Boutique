@@ -6,12 +6,12 @@ form.addEventListener('submit', (e) => {
 
     const email = input.value.trim();
     if (!email) {
-        showMessage('Заполните поле!⚔️', 'error');
+        showMessage('Fill in the field!⚔️', 'error');
         return;
     }
 
     if (!validateEmail(email)) {
-        showMessage('Некорректная форма заполнения!👀', 'error');
+        showMessage('Incorrect form filling!👀', 'error');
         return;
     }
 
@@ -33,9 +33,9 @@ form.addEventListener('submit', (e) => {
         .then(response => {
             if (response.ok) {
                 input.value = '';
-                showMessage('Спасибо за оставленную заявку! ☃️', 'success');
+                showMessage('Thank you for your message! ☃️', 'success');
             } else {
-                showMessage('Произошла ошибка при отправке. Попробуйте позже😢', 'error');
+                showMessage('An error occurred while sending. Please try again later😢', 'error');
             }
         })
 });
