@@ -10,3 +10,5 @@ getDiscproducts()
 
 
 import "./email.js"
+
+import "./filters.js" 
