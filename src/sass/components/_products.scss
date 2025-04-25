@@ -1,10 +1,14 @@
 .pr {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  user-select: none;
   border-radius: 20px;
   padding: 20px;
   max-width: 335px;
   height: 355px;
   background: #fafafa;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @media (min-width: 768px) {
     margin: 0;
@@ -14,6 +18,10 @@
   @media (min-width: 1280px) {
     margin: 0;
     width: 298px;
+  }
+
+  @media (min-width: 1600px) {
+    height: 369px;
   }
 
   &__title {
@@ -56,6 +64,7 @@
       line-height: 141%;
     }
   }
+
   &__popular {
     font-weight: 400;
     font-size: 10px;
@@ -85,12 +94,13 @@
   }
 
   &__btn {
-    border-radius: 17px;
-    width: 34px;
+    border-radius: 100%;
+    width: 38px;
     height: 34px;
     background: #586f1f;
     border: none;
     padding: 9px;
+    cursor: pointer;
   }
 
   &__svg {
@@ -101,6 +111,7 @@
   }
 
   &__img {
+    pointer-events: none;
     width: 140px;
     height: 140px;
   }
@@ -130,10 +141,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 35px;
+    margin-top: 32px;
 
     @media (min-width: 768px) {
       margin-top: 42px;
+    }
+
+    @media (min-width: 1600px) {
+      margin-top: 22px;
     }
   }
 }
@@ -151,6 +166,10 @@
     line-height: 126%;
   }
 
+  @media(min-width: 1600px) {
+    margin-top: 25px;
+  }
+
   &__disc {
     font-weight: 500;
     font-size: 21px;
@@ -159,9 +178,17 @@
     margin-top: 64px;
     margin-bottom: 19px;
 
+    @media (min-width: 735px) {
+      margin-left: calc(50% + -343px);
+    }
+
     @media (min-width: 768px) {
       font-size: 25px;
       line-height: 126%;
+      margin-left: 0;
+    }
+    @media (min-width: 1600px) {
+      margin-top: 40px;
     }
   }
 }
@@ -171,7 +198,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 25px;
   }
+
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -184,8 +213,11 @@
     gap: 20px;
   }
 
-  @media (min-width: 1400) {
+  @media (min-width: 1600) {
     width: 936px;
+    column-gap: 20px;
+    row-gap: 35px;
+    // width: 925px;
   }
 }
 
@@ -205,3 +237,113 @@
 // .products {
 //   display: flex;
 // }
+br {
+  display: none; // За замовчуванням ховаємо br
+
+  @media (min-width: 768px) {
+    display: block; // Показуємо br тільки на екранах 755px і більше
+  }
+}
+
+.productsDisplay {
+  @media (min-width: 1600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+}
+
+.cards {
+  &__span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    @media (min-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  &__end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    @media (min-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  &__btn {
+    // padding: 5px 11px;
+    border-radius: 60px;
+    width: 28px;
+    height: 28px;
+    border: none;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 142%;
+    text-align: center;
+    color: #e8e8e2;
+    background-color: #6d8434;
+    position: relative;
+
+
+   
+    &--active {
+      padding: 0px 9px;
+      color: #e8e8e2;
+    }
+
+    &:not(:disabled) {
+      color: #a3a3a3;
+      background-color: #fff;
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+.products__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  margin: 0 10px;
+  @media (min-width: 768px) {
+    margin: 0 36px;
+    gap: 8px;
+  }
+}
+
+.pagination__wrapper {
+
+  .disable {
+    background-color: #FAFAFA;
+    color: red;
+  }
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+  @media (min-width: 768px) {
+    margin-top: 50px;
+  }
+  // width: 500px;
+  // height: 60px;
+}
+
+
+

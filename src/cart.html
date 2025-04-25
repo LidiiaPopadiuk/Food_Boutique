@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart - Food Boutique</title>
+
+    <link rel="stylesheet" href="sass/index.scss" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    />
+
+    <link rel="shortcut icon" href="./images/favicon.svg" type="image/x-icon" />
+  </head>
+  <body>
+    <include src="./partials/header.html"></include>
+    <section class="cart">
+      <div class="container">
+        <div class="cart__head">
+          <div class="cart__head-box">
+            <img src="images/cart.svg" alt="cart" class="cart__icon" />
+            <h2 class="cart__title">
+              Cart ( <span class="cart-amount">0</span> )
+            </h2>
+            <h2 class="cart__title cart__title--green">
+              Total Prize: ( <span id="prize-sum">0</span> )
+            </h2>
+          </div>
+
+          <button class="cart__deleteall btn del-btn">DELETE ALL</button>
+        </div>
+        <ul class="cart__list"></ul>
+        <div class="cart__empty" style="display: none">
+          <img
+            src="images/basket-empty.png"
+            alt="Empty Basket"
+            class="cart__emptyimg"
+            loading="lazy"
+          />
+          <p class="cart__objective">
+            Your basket is <span class="cart__green">empty...</span>
+          </p>
+          <p class="cart__objective">
+            Go to the main page to select your favorite <br />
+            products and add them to the cart.
+          </p>
+        </div>
+        <form class="cart__checkout">
+          <input
+            type="text"
+            placeholder="Your First and Last name"
+            class="cart__input"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Your phone number"
+            class="cart__input"
+            required
+          />
+          <input type="email" placeholder="Your E-mail" class="cart__input" />
+          <textarea class="cart__textarea" rows="7"></textarea>
+          <button class="btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+    <script type="module" src="./js/cart.js"></script>
+  </body>
+</html>

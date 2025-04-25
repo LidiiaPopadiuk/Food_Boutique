@@ -1,17 +1,21 @@
 .disc {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 1s;
+  user-select: none;
   border-radius: 15px;
   width: 335px;
   height: 237px;
   background: #fafafa;
   padding: 15px 16px 15px 16px;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @media (min-width: 768px) {
     margin: 0;
     width: 335px;
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1600px) {
     width: 275px;
     height: 235px;
   }
@@ -22,7 +26,7 @@
     left: 252px;
     animation: spin 6s linear infinite;
 
-    @media (min-width: 1400px) {
+    @media (min-width: 1600px) {
       bottom: 217px;
       left: 193px;
     }
@@ -38,6 +42,7 @@
   }
 
   &__img {
+    pointer-events: none;
     width: 114px;
     height: 114px;
     margin: auto;
@@ -60,7 +65,7 @@
   }
 
   &__btn {
-    border-radius: 17px;
+    border-radius: 100%;
     width: 34px;
     height: 34px;
     background: #586f1f;
@@ -97,6 +102,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -109,18 +115,46 @@
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+    gap: 25px;
   }
+  @media (min-width: 735px) {
+    flex-direction: row;
+    // justify-content: space-between;
+  }
+
   @media (min-width: 768px) {
     display: flex;
-    // justify-content: space-between;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 32px;
     margin-bottom: 100px;
+    flex-direction: row;
   }
 
-  @media (min-width: 1400px) {
+  @media (min-width: 1600px) {
     gap: 20px;
     width: 275px;
     margin-top: 19px;
+  }
+}
+.discountDiv {
+  @media (min-width: 375px) {
+    width: 335px;
+    margin: 0 auto 100px;
+  }
+  @media (min-width: 735px) {
+    width: auto;
+  }
+
+  @media (min-width: 768px) {
+    width: 704px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 936;
+  }
+
+  @media (min-width: 1600px) {
+    width: 275px;
   }
 }
