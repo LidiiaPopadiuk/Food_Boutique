@@ -100,6 +100,7 @@
     background: #586f1f;
     border: none;
     padding: 9px;
+    cursor: pointer;
   }
 
   &__svg {
@@ -305,6 +306,7 @@ br {
     &:not(:disabled) {
       color: #a3a3a3;
       background-color: #fff;
+      cursor: pointer;
     }
   }
 }

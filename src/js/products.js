@@ -2,6 +2,8 @@ import { log } from 'handlebars/runtime';
 import template from '../templates/card.hbs';
 import popularTemplate from '../templates/cardPopular.hbs';
 import discTemplate from '../templates/cardDis.hbs';
+import { add2Cart } from './cart';
+
 // import modalTemplate from '../templates/modal.hbs'
 // import discountImg from '../images/round.svg'
 
@@ -222,3 +224,10 @@ export const getDiscproducts = async () => {
 //   document.body.classList.remove('no-scroll')
 //   modalWrapper.innerHTML = ''
 // });
+
+productsAllWrapper.addEventListener('click', e => {
+  const { target } = e;
+  const button = target.closest('.pr__btn');
+
+  if (button) add2Cart(button.parentElement.parentElement.dataset.id);
+});
