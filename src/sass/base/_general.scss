@@ -5,11 +5,22 @@
   margin: 0;
   border: 0;
   outline: 0;
-  font-size: 13px;
-  letter-spacing: .4px;
 
-  @media (min-width: 480px) {
-    font-size: 16px;
+
+}
+
+.add2cart {
+  transition: 0.4s;
+  &:hover {
+    background: $green-light;
+    box-shadow: 0px 0px 3px 0px $gris-dark;
+  }
+  &:focus {
+    outline: 5px solid $gris-dark;
+  }
+  &:active {
+    background: $green-dark;
+    box-shadow: 0px 0px 3px 0px $gris-dark;
   }
 }
 

@@ -8,10 +8,21 @@ const productsContainer = document.querySelector('.products__items');
 
 let allProducts = [];
 
+let limit;
+const screenWidth = window.innerWidth;
+
+if (screenWidth >= 1280) {
+  limit = 9;
+} else if (screenWidth >= 768) {
+  limit = 8;
+} else {
+  limit = 6;
+}
+
 const getProducts = async () => {
   try {
     const response = await fetch(
-      'https://food-boutique.b.goit.study/api/products'
+      `https://food-boutique.b.goit.study/api/products?limit=${limit}`
     );
     const data = await response.json();
     allProducts = data.results;
@@ -28,13 +39,12 @@ const getFilteredProducts = async(
   category = '',
   keyword = '',
   page = 1,
-  limit = 6,
   sort = ''
 ) => {
   try{
-    const response =  await fetch(`https://food-boutique.b.goit.study/api/products?keyword=${keyword}&category=&sort=${sort}`)
+    const response =  await fetch(`https://food-boutique.b.goit.study/api/products?keyword=${keyword}&category=${category}&sort=${sort}&limit=${limit}`)
     const data = await response.json()
-    console.log(`https://food-boutique.b.goit.study/api/products?keyword=${keyword}&category=&sort=${sort}`);
+    console.log(`https://food-boutique.b.goit.study/api/products?keyword=${keyword}&category=${category}&sort=${sort}&limit=${limit}`);
     
     return data.results
  
@@ -50,7 +60,7 @@ const filterSearch = async () => {
     const response = await fetch(
       `https://food-boutique.b.goit.study/api/products?keyword=${encodeURIComponent(
         keyword
-      )}`
+      )}&limit=${limit}`
     );
     const data = await response.json();
     renderProducts(data.results);
@@ -62,12 +72,13 @@ const filterSearch = async () => {
 // filterSearch()
 
 const filterByCategory = async () => {
+
   const selectedCategory = selectCategories.value;
   try {
     const response = await fetch(
       `https://food-boutique.b.goit.study/api/products?category=${encodeURIComponent(
         selectedCategory
-      )}`
+      )}&limit=${limit}`
     );
     const data = await response.json();
     renderProducts(data.results);
@@ -100,7 +111,7 @@ const filterByType = async () => {
   const sortType = selectSortby.value;
   console.log(sortType);
   console.log(
-    `https://food-boutique.b.goit.study/api/products?sort=${sortType}`
+    `https://food-boutique.b.goit.study/api/products?sort=${sortType}&limit=${limit}`
   );
   switch (sortType) {
     case 'byABC_Asc':
@@ -122,7 +133,7 @@ const filterByType = async () => {
       products.sort((a, b) => b.popularity - a.popularity);
       break;
   }
-  console.log(products);
+
   renderProducts(products);
 };
 
@@ -151,7 +162,7 @@ const renderProducts = products => {
   }
 
   products.forEach(product => {
-    const productHTML = `  <div class='pr' id='${product.id}'>
+    const productHTML = `  <div class='pr' id='${product._id}'>
     <div class='pr__wrapperimg'>
       <img class='pr__img' src='${product.img}' alt='${product.name}' />
     </div>
@@ -161,7 +172,7 @@ const renderProducts = products => {
     <p class='pr__popular'><span class="pr__span">Popularity:</span>  ${product.popularity}</p>
     <div class="pr__wrapper">
       <h2 class='pr__price'> ${product.price}</h2>
-      <button class='pr__btn'>
+      <button class='pr__btn add2cart'>
         <svg
           class='pr__svg'
           xmlns='http://www.w3.org/2000/svg'

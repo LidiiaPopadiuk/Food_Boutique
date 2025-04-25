@@ -10,6 +10,7 @@ import { add2Cart } from './cart';
 const productsAllWrapper = document.querySelector('.products__items');
 const popularProductsWrapper = document.querySelector('.products__popular');
 const discountProductsWrapper = document.querySelector('.products__discount');
+const productsDisplayWrapper = document.querySelector('.productsDisplay');
 const paginationWrapper = document.querySelector('.products__pagination');
 const wrapperAllPagination = document.querySelector('.pagination__wrapper');
 const firstBtn = document.querySelector('.firstF'); // <<
@@ -225,9 +226,28 @@ export const getDiscproducts = async () => {
 //   modalWrapper.innerHTML = ''
 // });
 
-productsAllWrapper.addEventListener('click', e => {
-  const { target } = e;
-  const button = target.closest('.pr__btn');
+document.addEventListener('click', async (e) => {
+  if (!e.target.closest('.add2cart')) return;
 
-  if (button) add2Cart(button.parentElement.parentElement.dataset.id);
+  const button = e.target.closest('.add2cart');
+  if (!button) return;
+
+  const productElement = button.closest('.pr');
+  const discountElement = button.closest('.disc');
+  const popularElement = button.closest('.pop');
+
+  if (discountElement && discountElement.id) {
+    add2Cart(discountElement.id);
+    return;
+  }
+
+  if (productElement && productElement.id) {
+    add2Cart(productElement.id);
+    return;
+  }
+  if (popularElement && popularElement.id) {
+    add2Cart(popularElement.id);
+    return;
+  }
+  console.error('Could not find product or discount ID');
 });
