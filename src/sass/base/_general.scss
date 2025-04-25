@@ -74,9 +74,10 @@ a {
     width: 1000px;
   }
 
-  @media (min-width: 1400px) {
-    padding: 0 100px;
-    min-width: 1240px;
+  @media (min-width: 1600px) {
+    padding: 0 90px;
+    // min-width: 1440px;
+      width: 1440px;
   }
 }
 
