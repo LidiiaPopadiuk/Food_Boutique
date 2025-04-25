@@ -7,3 +7,6 @@ import { getProducts, getPopularProducts, getDiscproducts } from './products.js'
 getProducts()
 getPopularProducts()
 getDiscproducts()
+
+
+import "./email.js"
