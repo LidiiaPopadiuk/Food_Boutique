@@ -6,6 +6,7 @@ import popularTemplate from '../templates/cardPopular.hbs';
 import discTemplate from '../templates/cardDis.hbs';
 // import discountImg from '../images/round.svg'
 
+const productsDOM = document.querySelector('.products');
 const productsAllWrapper = document.querySelector('.products__items');
 const popularProductsWrapper = document.querySelector('.products__popular');
 const discountProductsWrapper = document.querySelector('.products__discount');
@@ -84,9 +85,18 @@ export const getDiscproducts = async () => {
 // console.log('total pages:', totalPages);
 // }
 
-productsAllWrapper.addEventListener('click', e => {
+productsDOM.addEventListener('click', e => {
   const { target } = e;
-  const button = target.closest('.pr__btn');
+  const button = target.closest('.add2cart');
 
-  if (button) add2Cart(button.parentElement.parentElement.dataset.id);
+  let id = target;
+  while (id && !id.dataset.id) {
+    id = id.parentElement;
+  }
+
+  id = id.dataset.id;
+
+  console.log(id);
+
+  if (button) add2Cart(id);
 });

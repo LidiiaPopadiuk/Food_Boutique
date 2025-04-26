@@ -1,10 +1,11 @@
 .disc {
+  position: relative;
   opacity: 0;
   animation: fadeIn 1s forwards;
   animation-delay: 1s;
   user-select: none;
   border-radius: 15px;
-  width: 335px;
+  max-width: 335px;
   height: 237px;
   background: #fafafa;
   padding: 15px 16px 15px 16px;
@@ -21,15 +22,10 @@
   }
 
   &__discRound {
-    position: relative;
-    bottom: 218px;
-    left: 252px;
+    position: absolute;
+    top: 0;
+    right: 0;
     animation: spin 6s linear infinite;
-
-    @media (min-width: 1400px) {
-      bottom: 217px;
-      left: 193px;
-    }
   }
 
   &__wrapperimg {
@@ -65,12 +61,13 @@
   }
 
   &__btn {
+    background: #586f1f;
+    border: none;
     border-radius: 100%;
     width: 34px;
     height: 34px;
-    background: #586f1f;
-    border: none;
     padding: 9px;
+    min-height: auto;
   }
 
   &__svg {

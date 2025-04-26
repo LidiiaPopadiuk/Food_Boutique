@@ -1,161 +1,164 @@
 import tmpl from '../templates/cart.hbs';
 
 const cartList = document.querySelector('.cart__list');
-const cartAmount = document.querySelectorAll('.cart-amount');
-const deleteAll = document.querySelector('.cart__deleteall');
-const prizeSum = document.querySelector('#prize-sum');
+const cartAmountEls = document.querySelectorAll('.cart-amount');
+const deleteAllBtn = document.querySelector('.cart__deleteall');
+const prizeSumEl = document.querySelector('#prize-sum');
+const cartEmpty = document.querySelector('.cart__empty');
+const checkoutForm = document.querySelector('.cart__checkout');
 
-let cartData = JSON.parse(localStorage.getItem('cart'));
-let totalSum = 0;
+let cartData = (() => {
+  const data = JSON.parse(localStorage.getItem('cart'));
+  return Array.isArray(data) ? data : [];
+})();
 
-if (!Array.isArray(cartData)) {
-  cartData = [];
-  localStorage.setItem('cart', JSON.stringify(cartData));
-}
-
-const loadCart = async () => {
-  cartData = JSON.parse(localStorage.getItem('cart')) || [];
-
-  cartAmount.forEach(el => {
-    el.textContent = cartData.length;
-  });
-
-  if (!cartList) return;
-  cartList.innerHTML = '';
-
-  const cartEmpty = document.querySelector('.cart__empty');
-  const deleteAll = document.querySelector('.cart__deleteall');
-  const form = document.querySelector('.cart__checkout');
-
-  if (cartData.length === 0) {
-    cartEmpty.style.removeProperty('display');
-    deleteAll.style.display = 'none';
-    form.style.display = 'none';
-    await updateTotalPrice();
-    return;
-  } else {
-    cartEmpty?.classList.add('hidden');
-    deleteAll?.classList.remove('hidden');
-  }
-
-  const fetchProducts = async () => {
-    for (const el of cartData) {
-      try {
-        const response = await fetch(
-          `https://food-boutique.b.goit.study/api/products/${el.id}`,
-        );
-        const product = await response.json();
-
-        cartList.insertAdjacentHTML(
-          'beforeend',
-          tmpl({
-            id: el.id,
-            name: product.name,
-            desc: product.desc,
-            img: product.img,
-            category: product.category,
-            price: '$' + product.price,
-            size: product.size,
-            popularity: product.popularity,
-            amount: el.amount,
-          }),
-        );
-      } catch (error) {
-        console.error('Error loading product:', error);
-      }
-    }
-
-    await updateTotalPrice(); // ⬅ ОНОВЛЕННЯ ЦІНИ ПІСЛЯ ВИВОДУ ПРОДУКТІВ
-  };
-
-  fetchProducts();
+const getCartData = () => {
+  const data = JSON.parse(localStorage.getItem('cart'));
+  return Array.isArray(data) ? data : [];
 };
 
-export const add2Cart = id => {
-  if (!id) throw new Error('ID should be in add2Cart usage!!!');
-
-  const existingItem = cartData.find(item => item.id === id);
-
-  if (existingItem) {
-    existingItem.amount += 1;
-  } else {
-    cartData.push({ id, amount: 1 });
-  }
-
+const saveCartData = () => {
   localStorage.setItem('cart', JSON.stringify(cartData));
-
-  loadCart();
 };
 
-loadCart();
+const updateCartAmount = () => {
+  cartAmountEls.forEach(el => (el.textContent = cartData.length));
+};
 
 const updateTotalPrice = async () => {
   let total = 0;
-
-  for (const el of cartData) {
+  for (const item of cartData) {
     try {
       const response = await fetch(
-        `https://food-boutique.b.goit.study/api/products/${el.id}`,
+        `https://food-boutique.b.goit.study/api/products/${item.id}`,
       );
       const product = await response.json();
-      total += +el.amount * +product.price;
+      total += item.amount * product.price;
     } catch (error) {
       console.error('Error getting price:', error);
     }
   }
-
-  prizeSum.textContent = `$${total.toFixed(2)}`;
+  prizeSumEl.textContent = `$${total.toFixed(2)}`;
 };
 
-if (!cartList) return;
-cartList.addEventListener('click', e => {
-  const getId = (dom = false) => {
-    let id = e.target;
-    while (id && !id.dataset.id) {
-      id = id.parentElement;
-    }
+const fetchProductData = async id => {
+  const response = await fetch(
+    `https://food-boutique.b.goit.study/api/products/${id}`,
+  );
+  return await response.json();
+};
 
-    if (!dom) {
-      return id.dataset.id;
+const renderCartItem = async item => {
+  try {
+    const product = await fetchProductData(item.id);
+    const existingEl = cartList.querySelector(`[data-id="${item.id}"]`);
+    const html = tmpl({
+      ...product,
+      id: item.id,
+      price: `$${product.price}`,
+      amount: item.amount,
+    });
+
+    if (existingEl) {
+      existingEl.outerHTML = html;
     } else {
-      return id;
+      cartList.insertAdjacentHTML('beforeend', html);
     }
-  };
-  const expr = expr => e.target.classList.contains(expr);
+  } catch (error) {
+    console.error('Error loading product:', error);
+  }
+};
 
-  const numAct = action => {
-    const id = getId();
-    const item = cartData.find(item => item.id === id);
+const renderCart = async () => {
+  updateCartAmount();
 
-    if (!item) return;
+  if (cartData.length === 0) {
+    cartList.innerHTML = '';
+    cartEmpty?.classList.remove('hidden');
+    deleteAllBtn?.classList.add('hidden');
+    checkoutForm?.classList.add('hidden');
+    await updateTotalPrice();
+    return;
+  }
 
-    if (action === '-' && item.amount <= 1) return;
+  cartEmpty?.classList.add('hidden');
+  deleteAllBtn?.classList.remove('hidden');
+  checkoutForm?.classList.remove('hidden');
 
-    item.amount = action === '-' ? item.amount - 1 : item.amount + 1;
+  const renderedIds = new Set();
 
-    localStorage.setItem('cart', JSON.stringify(cartData));
+  for (const item of cartData) {
+    await renderCartItem(item);
+    renderedIds.add(item.id);
+  }
 
-    const num = getId(true).querySelector('.cart__amount-num');
-    num.textContent =
-      action === '+' ? +num.textContent + 1 : +num.textContent - 1;
+  // Видаляємо DOM-елементи, яких вже немає в cartData
+  cartList.querySelectorAll('[data-id]').forEach(el => {
+    if (!renderedIds.has(el.dataset.id)) {
+      el.remove();
+    }
+  });
 
-    updateTotalPrice();
-  };
+  await updateTotalPrice();
+};
 
-  if (expr('cart__amount-plus')) numAct('+');
+export const add2Cart = id => {
+  if (!id) throw new Error('ID must be provided to add2Cart');
 
-  if (expr('cart__amount-minus')) numAct('-');
+  const item = cartData.find(item => item.id === id);
 
-  if (expr('cart__delete')) {
-    const id = getId();
-    cartData = cartData.filter(item => item.id !== id);
-    localStorage.setItem('cart', JSON.stringify(cartData));
-    loadCart();
+  if (item) {
+    item.amount++;
+  } else {
+    cartData.push({ id, amount: 1 });
+  }
+
+  saveCartData();
+  renderCart();
+};
+
+const getItemElement = e => {
+  let el = e.target;
+  while (el && !el.dataset.id) {
+    el = el.parentElement;
+  }
+  return el;
+};
+
+cartList?.addEventListener('click', async e => {
+  const el = getItemElement(e);
+  if (!el) return;
+
+  const id = el.dataset.id;
+  const item = cartData.find(i => i.id === id);
+  if (!item) return;
+
+  let shouldRender = false;
+
+  if (e.target.classList.contains('cart__amount-plus')) {
+    item.amount++;
+    shouldRender = true;
+  } else if (
+    e.target.classList.contains('cart__amount-minus') &&
+    item.amount > 1
+  ) {
+    item.amount--;
+    shouldRender = true;
+  } else if (e.target.classList.contains('cart__delete')) {
+    cartData = cartData.filter(i => i.id !== id);
+    shouldRender = true;
+  }
+
+  if (shouldRender) {
+    saveCartData();
+    await renderCart();
   }
 });
 
-deleteAll.addEventListener('click', () => {
-  localStorage.setItem('cart', '[]');
+deleteAllBtn?.addEventListener('click', async () => {
   cartData = [];
-  loadCart();
+  saveCartData();
+  await renderCart();
 });
+
+renderCart();

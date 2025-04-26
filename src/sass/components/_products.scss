@@ -106,9 +106,11 @@
   }
 
   &__img {
+    object-fit: cover;
     pointer-events: none;
     width: 140px;
     height: 140px;
+    margin: 0 auto;
   }
 
   &__wrapperimg {
@@ -116,7 +118,7 @@
     max-width: 295px;
     height: 178px;
     background: #e8e8e2;
-    padding: 19px 77.5px;
+    padding: 19px 3em;
 
     @media (min-width: 1280px) {
       width: 258px;
