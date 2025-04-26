@@ -54,20 +54,6 @@ const renderPagination = (currentPage, totalPages) => {
     startPage = Math.max(1, endPage - 3);
   }
 
-  // for (let i = startPage; i <= endPage; i++) {
-  //   const btn = document.createElement('button');
-  //   btn.classList.add('cards__btn');
-  //   btn.dataset.page = i;
-  //   btn.textContent = i;
-
-  //   if (i === currentPage) {
-  //     btn.classList.add('cards__btn--active');
-  //     btn.disabled = true;
-  //   }
-
-  //   paginationWrapper.appendChild(btn);
-  // }
-
   for (let i = startPage; i <= endPage; i++) {
     const btn = document.createElement('button');
     btn.classList.add('cards__btn');
@@ -131,8 +117,8 @@ export const getProducts = async (page = 1) => {
 };
 
 // Функція для оновлення стану кнопок
+
 const updatePaginationButtons = () => {
-  // Оновлюємо стан кнопок "перша" і "попередня"
   if (currentPage === 1) {
     firstBtn.classList.add('disable');
     lastFirstBtn.classList.add('disable');
@@ -141,7 +127,6 @@ const updatePaginationButtons = () => {
     lastFirstBtn.classList.remove('disable');
   }
 
-  // Оновлюємо стан кнопок "остання" і "наступна"
   if (currentPage === totalPagesGlobal) {
     lastBtn.classList.add('disable');
     firstSecBtn.classList.add('disable');
@@ -151,30 +136,36 @@ const updatePaginationButtons = () => {
   }
 };
 
-// Обробка кліків на кнопки навігації
-wrapperAllPagination.addEventListener('click', e => {
-  const target = e.target.closest('button');
-  if (!target) return;
 
-  if (target.classList.contains('firstF')) {
+wrapperAllPagination.addEventListener('click', e => {
+  const firstBtn = e.target.closest('.firstF');
+  const lastBtn = e.target.closest('.lastS');
+  const prevBtn = e.target.closest('.lastF');
+  const nextBtn = e.target.closest('.secondS');
+
+  if (firstBtn) {
     currentPage = 1;
-  } else if (target.classList.contains('lastS')) {
+    getProducts(currentPage);
+    updatePaginationButtons();
+  } else if (lastBtn) {
     currentPage = totalPagesGlobal;
-  } else if (target.classList.contains('lastF')) {
+    getProducts(currentPage);
+    updatePaginationButtons();
+  } else if (prevBtn) {
     if (currentPage > 1) {
       currentPage -= 1;
+      getProducts(currentPage);
+      updatePaginationButtons();
     }
-  } else if (target.classList.contains('secondS')) {
+  } else if (nextBtn) {
     if (currentPage < totalPagesGlobal) {
       currentPage += 1;
+      getProducts(currentPage);
+      updatePaginationButtons();
     }
   }
-
-  getProducts(currentPage);
-  updatePaginationButtons();
 });
 
-// Обробка кліків на кнопки сторінок
 paginationWrapper.addEventListener('click', e => {
   const btn = e.target.closest('.cards__btn');
   if (btn) {
@@ -236,6 +227,7 @@ document.addEventListener('click', async (e) => {
   const discountElement = button.closest('.disc');
   const popularElement = button.closest('.pop');
 
+
   if (discountElement && discountElement.id) {
     add2Cart(discountElement.id);
     return;
@@ -249,5 +241,6 @@ document.addEventListener('click', async (e) => {
     add2Cart(popularElement.id);
     return;
   }
-  console.error('Could not find product or discount ID');
+
+
 });

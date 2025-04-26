@@ -1,8 +1,4 @@
 .pr {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 1s;
-  user-select: none;
   border-radius: 20px;
   padding: 20px;
   max-width: 335px;
@@ -22,7 +18,6 @@
 
   @media (min-width: 1600px) {
     height: 369px;
-
   }
 
   &__title {
@@ -65,7 +60,6 @@
       line-height: 141%;
     }
   }
-
   &__popular {
     font-weight: 400;
     font-size: 10px;
@@ -95,13 +89,12 @@
   }
 
   &__btn {
-    border-radius: 100%;
-    width: 38px;
+    border-radius: 17px;
+    width: 34px;
     height: 34px;
     background: #586f1f;
     border: none;
     padding: 9px;
-    cursor: pointer;
   }
 
   &__svg {
@@ -112,7 +105,6 @@
   }
 
   &__img {
-    pointer-events: none;
     width: 140px;
     height: 140px;
   }
@@ -154,18 +146,6 @@
   }
 }
 
-.products {
-  padding-bottom: 80px;
-
-  @media (min-width: 768px) {
-    padding-bottom: 100px;
-  }
-
-  @media(min-width: 1600px) {
-    padding-bottom: 140px;
-  }
-}
-
 .subtitles {
   font-weight: 500;
   font-size: 21px;
@@ -180,8 +160,7 @@
   }
 
   @media(min-width: 1600px) {
-    margin-top: 0px;
-
+    margin-top: 25px;
   }
 
   &__disc {
@@ -201,7 +180,6 @@
       line-height: 126%;
       margin-left: 0;
     }
-
     @media (min-width: 1600px) {
       margin-top: 40px;
     }
@@ -215,7 +193,6 @@
     flex-wrap: wrap;
     gap: 25px;
   }
-
   @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
@@ -252,6 +229,7 @@
 // .products {
 //   display: flex;
 // }
+
 br {
   display: none; // За замовчуванням ховаємо br
 
@@ -264,7 +242,7 @@ br {
   @media (min-width: 1600px) {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 40px;
   }
 }
@@ -282,7 +260,6 @@ br {
     justify-content: center;
     align-items: center;
     gap: 4px;
-
     @media (min-width: 768px) {
       gap: 8px;
     }
@@ -293,7 +270,6 @@ br {
     justify-content: center;
     align-items: center;
     gap: 4px;
-
     @media (min-width: 768px) {
       gap: 8px;
     }
@@ -314,7 +290,7 @@ br {
     position: relative;
 
 
-
+   
     &--active {
       padding: 0px 9px;
       color: #e8e8e2;
@@ -323,7 +299,6 @@ br {
     &:not(:disabled) {
       color: #a3a3a3;
       background-color: #fff;
-      cursor: pointer;
     }
   }
 }
@@ -337,7 +312,6 @@ br {
   gap: 4px;
   height: 28px;
   margin: 0 10px;
-
   @media (min-width: 768px) {
     margin: 0 36px;
     gap: 8px;
@@ -350,7 +324,7 @@ br {
     background: #fafafa;
     color: #e8e8e2;
   }
-
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -359,7 +333,21 @@ br {
   @media (min-width: 768px) {
     margin-top: 50px;
   }
-
   // width: 500px;
   // height: 60px;
 }
+
+.pr__btn.add2cart.in-cart,
+.pop__btn.btn.add2cart.in-cart,
+.disc__btn.btn.add2cart.in-cart {
+  background-color: #6D8434;
+  color: #fff;
+  cursor: default;
+  
+  &:hover {
+    background-color: #6D8434;
+  }
+}
+
+
+
